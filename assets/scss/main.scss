@@ -1,0 +1,14 @@
+@import 'vuetify/styles';
+
+.tr-test {
+    color: green!important
+}
+.v-btn{border-radius: 0!important;
+text-transform: none!important;
+letter-spacing: 0!important;}
+
+.v-checkbox-btn .v-selection-control__wrapper{top:7px;}
+@media (min-width: 2560px)
+{.v-container{
+    max-width: 1800px!important;
+}}
