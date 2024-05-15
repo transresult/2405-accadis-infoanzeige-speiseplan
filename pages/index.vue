@@ -3,28 +3,25 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
   <v-container fluid class="pa-0">
     <v-row>
       <v-col class="pa-0">
-        <v-container id="hero" class="pa-0 mt-10">
+        <v-container id="hero" class="pa-0 mt-4">
           <v-card color="" class="">
             <v-row>
-              <v-col cols="9" class="px-12 my-W12">
-                <div class="text-h2 py-4 pt-8">Menü der Woche</div>
-                <div class="text-h5 py-4 pt-8">30.05.2024 - 04.06.2024</div>
+              <v-col cols="9">
+                <v-img height="100%" cover src="img/header-gemuese.jpg">
+                  <div class="text-white pa-8 pb-4">Öffnungszeiten accadis Family Bistro</div>
+                  <div class="text-h5 px-8 text-white pb-4">Mo. - Fr. 11:30 Uhr - 14:00 Uhr</div>
+                  <div class="px-8 text-white">Hinweis: 22.06.24 geschlossen</div>
+                </v-img>
               </v-col>
-              <v-col cols="3"> <v-img contain src="img/kv.webp"></v-img></v-col>
+              <v-col cols="3" class="pr-14 pt-6">
+                <div class="text-h3 py-4 text-right">Menü der Woche</div>
+                <div class="text-h5 py-4 text-right">20.06.2024 - 24.06.2024</div>
+              </v-col>
             </v-row>
           </v-card>
         </v-container>
 
-        <v-container id="introduction">
-          <v-card color="" class="px-6 py-4">
-            <div class="text-h6 font-weight-regular">
-              Es gibt zahlreiche Möglichkeiten, die accadis Hochschule und ihre Studiengänge näher kennenzulernen. Studieninfotage, Schnupper-Vorlesung,
-              Bildungsmessen - besuche unsere Angebote und finde heraus, welches Studium am besten passt.
-            </div>
-          </v-card>
-        </v-container>
-
-        <v-container id="upcoming">
+        <v-container class="px-0">
           <v-card color="grey-lighten-4" class="pa-3 pt-6">
             <v-card-text>
               <v-card class="featuredevent my-2 mb-6 pa-3">
@@ -54,7 +51,7 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                 <v-card-subtitle class="py-4">
                   <v-row>
                     <v-col><v-icon>mdi mdi-calendar</v-icon>12.03.2024</v-col>
-                    <v-col><v-icon>mdi mdi-clock</v-icon>18:00</v-col>
+
                     <v-col><v-icon>mdi mdi-map-marker</v-icon>vor Ort oder online</v-col>
 
                     <v-spacer></v-spacer> </v-row
@@ -94,32 +91,6 @@ export default {
   data() {
     return {
       search: "",
-      items: [
-        {
-          Datum: "10.05.2024",
-          name: "Infotag Bachelor Management",
-          Format: "online",
-          stock: true,
-        },
-        {
-          Datum: "10.05.2024",
-          name: "Infotag Bachelor Management",
-          Format: "online",
-          stock: true,
-        },
-        {
-          Datum: "10.05.2024",
-          name: "Infotag Bachelor Management",
-          Format: "online",
-          stock: true,
-        },
-        {
-          Datum: "10.05.2024",
-          name: "Infotag Bachelor Management",
-          Format: "online",
-          stock: true,
-        },
-      ],
     };
   },
 };
