@@ -17,3 +17,50 @@
 .v-container {
     max-width: 1920px !important;
 }
+
+.menucol {
+    padding: 0 !important;
+    opacity: 0.5;
+    filter: grayscale(1);
+
+    &.active {
+        border: 3px solid #004C93;
+
+
+        opacity: 1;
+        filter: grayscale(0)
+    }
+
+    .v-card-text {
+        padding: 20px 12px !important;
+
+        >div {
+            padding: 12px;
+        }
+    }
+
+    .v-row {
+
+        height: calc(650px / 3);
+
+        &:nth-of-type(1n+2) {
+            border-top: 1px solid #ccc;
+            padding-top: 30px
+        }
+    }
+}
+
+.card-date {
+
+    position: absolute;
+    top: -18px;
+    background-color: white;
+    right: 8px;
+    border-color: primary;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgb(0, 76, 147);
+    border-top-width: 8px;
+    border-style: solid;
+
+}
