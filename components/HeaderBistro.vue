@@ -9,9 +9,9 @@
             <div class="px-8 text-white">Hinweis: 22.06.24 geschlossen</div>
           </v-img>
         </v-col>
-        <v-col cols="3" class="pr-14 pt-6">
-          <div class="text-h3 py-4 text-right">Menü der Woche</div>
-          <div class="text-h5 py-4 text-right">20.06.2024 - 24.06.2024</div>
+        <v-col cols="3" class="pr-14 pt-12">
+          <div class="text-h4 py-4 text-right">Menü der Woche</div>
+          <div class="text-h5 text-right">20.06.2024 - 24.06.2024</div>
         </v-col>
       </v-row>
     </v-card>
