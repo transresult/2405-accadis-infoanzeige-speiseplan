@@ -5,9 +5,9 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
       <v-col class="pa-0">
         <header-bistro></header-bistro>
 
-        <v-container class="pa-12">
+        <v-container class="pa-12 pl-10">
           <v-row>
-            <v-col cols="1" class="active menucol">
+            <v-col style="max-width: 160px" class="active menucol">
               <v-card class="calendar-bg">
                 <v-card-text class="">
                   <v-card class="my-2 mb-6 pa-3">
@@ -108,9 +108,9 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                           <div class="text-h5 pr-16 pb-3">Vollkornbrotscheibe</div>
                         </v-col>
                         <div class="d-flex">
-                          <v-chip size="small" variant="elevated" color="green" text-color="white" class="mr-1">Bio</v-chip>
+                          <v-chip variant="elevated" color="green" text-color="white" class="mr-1">Bio</v-chip>
 
-                          <v-chip size="small" variant="elevated" color="green" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                          <v-chip variant="elevated" color="green" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
                         </div>
                       </v-row>
                       <v-row>

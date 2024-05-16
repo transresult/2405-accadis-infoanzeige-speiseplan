@@ -6,11 +6,11 @@
           <v-img src="/img/logo.svg" max-width="150" />
         </v-col>
         <v-spacer />
-        <v-col cols="5" class="text-right" align-self="center"
+        <v-col cols="5" class="text-right pr-8" align-self="center"
           ><div class="text-h4 font-weight-light">accadis <span class="font-weight-bold">Family Bistro</span></div></v-col
         >
 
-        <v-col class="text-right pr-6"><v-img max-width="150" src="/img/icon-restaurant.svg" /> </v-col>
+        <v-img src="/img/icon-restaurant.png" />
       </v-row>
     </v-container>
   </v-app-bar>
