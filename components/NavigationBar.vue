@@ -7,10 +7,10 @@
         </v-col>
         <v-spacer />
         <v-col cols="5" class="text-right" align-self="center"
-          ><div class="text-h5 font-weight-light">accadis <span class="font-weight-bold">Family Bistro</span></div></v-col
+          ><div class="text-h4 font-weight-light">accadis <span class="font-weight-bold">Family Bistro</span></div></v-col
         >
 
-        <v-col class="text-right pr-6"><v-icon size="60"> mdi-silverware-fork-knife</v-icon></v-col>
+        <v-col class="text-right pr-6"><v-img max-width="150" src="/img/icon-restaurant.svg" /> </v-col>
       </v-row>
     </v-container>
   </v-app-bar>

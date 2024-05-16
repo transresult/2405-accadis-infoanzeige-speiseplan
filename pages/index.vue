@@ -8,13 +8,19 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
         <v-container class="pa-12">
           <v-row>
             <v-col cols="1" class="active menucol">
-              <v-card>
+              <v-card class="calendar-bg">
                 <v-card-text class="">
-                  <v-card class="calendar-bg my-2 mb-6 pa-3">
+                  <v-card class="my-2 mb-6 pa-3">
                     <v-card-text>
-                      <v-row><div class="text-h5 font-weight-bold">Menü 1</div></v-row>
-                      <v-row><div class="text-h5 font-weight-bold">Menü 2</div></v-row>
-                      <v-row><div class="text-h5 font-weight-bold">Dessert</div></v-row>
+                      <v-row
+                        ><div class="text-center turkis text-h5">Menü <br /><span class="font-weight-light text-h2">1</span></div>
+                      </v-row>
+                      <v-row
+                        ><div class="text-center turkis text-h5">Menü <br /><span class="font-weight-light text-h2">2</span></div></v-row
+                      >
+                      <v-row
+                        ><div class="text-center turkis text-h5">Dessert <br /><span class="font-weight-light text-h2"></span></div>
+                      </v-row>
                     </v-card-text>
                   </v-card>
                 </v-card-text>
@@ -29,7 +35,13 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
-                          <div class="text-h5 pr-16 pb-3">Tortelloni Spinat und Ricotta</div>
+                          <div class="text-h5 pr-16 pb-3">
+                            Tortelloni Spinat und Ricotta
+                            <div class="d-flex">
+                              <v-chip size="small" color="primary" text-color="white">Primary</v-chip>
+                              <v-chip size="small" color="primary" text-color="white">Primary</v-chip>
+                            </div>
+                          </div>
                           <div class="text-h5 pr-16 pb-3">Spinatsahnesauce</div>
                           <div class="text-h5 pr-16 pb-3">Reibekäse</div>
                         </v-col>
@@ -95,6 +107,11 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                           <div class="text-h5 pr-16 pb-3">Brokkolicremesuppe mit Lachs</div>
                           <div class="text-h5 pr-16 pb-3">Vollkornbrotscheibe</div>
                         </v-col>
+                        <div class="d-flex">
+                          <v-chip size="small" variant="elevated" color="green" text-color="white" class="mr-1">Bio</v-chip>
+
+                          <v-chip size="small" variant="elevated" color="green" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                        </div>
                       </v-row>
                       <v-row>
                         <v-col class="pa-0">
