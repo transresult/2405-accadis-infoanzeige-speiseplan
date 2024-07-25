@@ -5,13 +5,19 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
       <v-col class="pa-0">
         <header-bistro></header-bistro>
 
-        <v-container class="pa-12 pl-10">
+        <v-container class="pa-8 pl-10">
           <v-row>
             <v-col style="max-width: 160px" class="active menucol">
               <v-card class="calendar-bg">
                 <v-card-text class="">
                   <v-card class="my-2 mb-6 pa-3">
                     <v-card-text>
+                      <v-row
+                        ><div class="text-center turkis text-h5">Rohkost</div>
+                        <div class="d-flex">
+                          <v-chip variant="elevated" size="small" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                        </div></v-row
+                      >
                       <v-row
                         ><div class="text-center turkis text-h5">Menü <br /><span class="font-weight-light text-h2">1</span></div>
                       </v-row>
@@ -35,13 +41,13 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
-                          <div class="text-h5 pr-16 pb-3">
-                            Tortelloni Spinat und Ricotta
-                            <div class="d-flex">
-                              <v-chip size="small" color="primary" text-color="white">Primary</v-chip>
-                              <v-chip size="small" color="primary" text-color="white">Primary</v-chip>
-                            </div>
-                          </div>
+                          <div class="text-h5 pr-16 pb-3">Paprika</div>
+                        </v-col>
+                      </v-row>
+
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">Tortelloni Spinat und Ricotta</div>
                           <div class="text-h5 pr-16 pb-3">Spinatsahnesauce</div>
                           <div class="text-h5 pr-16 pb-3">Reibekäse</div>
                         </v-col>
@@ -51,6 +57,11 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                           <div class="text-h5 pb-3">Rinderfrikadelle</div>
                           <div class="text-h5 pb-3">Reis</div>
                           <div class="text-h5 pb-3">Brokkoli-Blumenkohl-Rahmgemüse</div>
+                          <div class="d-flex">
+                            <v-chip variant="elevated" color="#80BA27" text-color="white" class="mr-1">Bio</v-chip>
+
+                            <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                          </div>
                         </v-col>
                       </v-row>
 
@@ -72,6 +83,12 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <calendar-bg-di> </calendar-bg-di>
 
                     <v-card-text>
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">Bio-Möhren</div>
+                          <v-chip variant="elevated" color="#80BA27" text-color="white" class="mr-1">Bio</v-chip>
+                        </v-col>
+                      </v-row>
                       <v-row>
                         <v-col class="pa-0">
                           <div class="text-h5 pr-16 pb-3">Gnocchi-Auflauf mit Erbsen und Käsesauce</div>
@@ -104,13 +121,18 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">Mais-Salat</div>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col class="pa-0">
                           <div class="text-h5 pr-16 pb-3">Brokkolicremesuppe mit Lachs</div>
                           <div class="text-h5 pr-16 pb-3">Vollkornbrotscheibe</div>
                         </v-col>
                         <div class="d-flex">
-                          <v-chip variant="elevated" color="green" text-color="white" class="mr-1">Bio</v-chip>
+                          <v-chip variant="elevated" color="#80BA27" text-color="white" class="mr-1">Bio</v-chip>
 
-                          <v-chip variant="elevated" color="green" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                          <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
                         </div>
                       </v-row>
                       <v-row>
@@ -140,6 +162,11 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <calendar-bg-do> </calendar-bg-do>
 
                     <v-card-text>
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">Gurken</div>
+                        </v-col>
+                      </v-row>
                       <v-row>
                         <v-col class="pa-0">
                           <div class="text-h5 pr-16 pb-3">Eier gekocht</div>
@@ -173,6 +200,12 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                     <calendar-bg-fr> </calendar-bg-fr>
 
                     <v-card-text>
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">Salat</div>
+                          <div class="text-h5 pr-16 pb-3">Yoghurt-Dressing</div>
+                        </v-col>
+                      </v-row>
                       <v-row>
                         <v-col class="pa-0">
                           <div class="text-h5 pr-16 pb-3">Hähnchenbrustfilet paniert</div>
