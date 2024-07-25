@@ -1,42 +1,96 @@
-import { VCard } from 'vuetify/lib/components/index.mjs';
 <template>
+
+  <!-- START NAVIGATIONBAR -->
+
+  <v-app-bar color="#DEDEDE" class="pa-4" extended :extension-height="0">
+    <v-container>
+      <v-row>
+        <v-col cols="6">
+          <v-img class="mt-4" src="/img/logo.svg" max-width="150" />
+        </v-col>
+        <v-spacer />
+        <v-col cols="5" class="text-right pr-12" align-self="center">
+          <div class="text-h4 font-weight-regular" style="color: #7d7c7d">accadis <span class="font-weight-bold">Family
+              Bistro</span></div>
+        </v-col>
+        <v-img src="/img/icon-restaurant.png" class="mr-2" />
+      </v-row>
+    </v-container>
+  </v-app-bar>
+
+  <!-- END NAVIGATIONBAR -->
+
   <v-container fluid class="pa-0">
     <v-row>
       <v-col class="pa-0">
-        <header-bistro></header-bistro>
+
+        <!-- START HEADER -->
+
+        <v-container id="hero" class="pa-0 mt-4">
+          <v-card color="grey" class="">
+            <v-img color="white" height="180" src="/img/biologisch.png" cover>
+              <div class="text-center text-h3 pb-2 pt-10 font-weight-bold" style="color: #7d7d7d">Menü der Woche</div>
+              <div class="text-h4 text-center font-weight-regular px-8 pt-1" style="color: #7d7d7d">03.06.2024 -
+                07.06.2024</div>
+              <div class="text-center pt-3 text-caption" style="color: #7d7d7d">
+                Alle Angaben ohne Gewähr. Informationen zu Zusatzstoffen und Allergenen siehe Aushang.
+              </div>
+            </v-img>
+          </v-card>
+        </v-container>
+
+        <!-- END HEADER -->
 
         <v-container class="pa-8 pl-10">
           <v-row>
+
+            <!-- START DESCRIPTION -->
+
             <v-col style="max-width: 160px" class="active menucol">
               <v-card class="calendar-bg">
                 <v-card-text class="">
                   <v-card class="my-2 mb-6 pa-3">
                     <v-card-text>
-                      <v-row
-                        ><div class="text-center turkis text-h5">Rohkost</div>
+                      <v-row>
+                        <div class="text-center turkis text-h5">Rohkost</div>
                         <div class="d-flex">
-                          <v-chip variant="elevated" size="small" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
-                        </div></v-row
-                      >
-                      <v-row
-                        ><div class="text-center turkis text-h5">Menü <br /><span class="font-weight-light text-h2">1</span></div>
+                          <v-chip variant="elevated" size="small" color="#80BA27" prepend-icon="mdi-leaf"
+                            text-color="white" class="mr-1">vegetarisch</v-chip>
+                        </div>
                       </v-row>
-                      <v-row
-                        ><div class="text-center turkis text-h5">Menü <br /><span class="font-weight-light text-h2">2</span></div></v-row
-                      >
-                      <v-row
-                        ><div class="text-center turkis text-h5">Dessert <br /><span class="font-weight-light text-h2"></span></div>
+                      <v-row>
+                        <div class="text-center turkis text-h5">Menü <br /><span
+                            class="font-weight-light text-h2">1</span></div>
+                      </v-row>
+                      <v-row>
+                        <div class="text-center turkis text-h5">Menü <br /><span
+                            class="font-weight-light text-h2">2</span></div>
+                      </v-row>
+                      <v-row>
+                        <div class="text-center turkis text-h5">Dessert <br /><span
+                            class="font-weight-light text-h2"></span></div>
                       </v-row>
                     </v-card-text>
                   </v-card>
                 </v-card-text>
               </v-card>
             </v-col>
+
+            <!-- END DESCRIPTION -->
+
+            <!-- START MENUE -->
+
             <v-col cols="" class="menucol">
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
-                    <calendar-bg-mo> </calendar-bg-mo>
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content flex-column justify-content-center align-center">
+                          <div class="text-h4 font-weight-bold text-center">Mo <span class="text-h5">03.06.</span></div>
+                        </div>
+                      </div>
+                    </div>
 
                     <v-card-text>
                       <v-row>
@@ -60,7 +114,8 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                           <div class="d-flex">
                             <v-chip variant="elevated" color="#80BA27" text-color="white" class="mr-1">Bio</v-chip>
 
-                            <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                            <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                              class="mr-1">vegetarisch</v-chip>
                           </div>
                         </v-col>
                       </v-row>
@@ -76,12 +131,19 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
               </v-card>
             </v-col>
 
+            <!-- END MENUE -->
+
             <v-col cols="" class="menucol">
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
-                    <calendar-bg-di> </calendar-bg-di>
-
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content d-flex flex-row align-end">
+                          <div class="text-h4 font-weight-bold text-center">Di <span class="text-h5">04.06.</span></div>
+                        </div>
+                      </div>
+                    </div>
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
@@ -116,8 +178,13 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
-                    <calendar-bg-mi> </calendar-bg-mi>
-
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content flex-column justify-content-center align-center">
+                          <div class="text-h4 font-weight-bold text-center">Mi <span class="text-h5">05.06.</span></div>
+                        </div>
+                      </div>
+                    </div>
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
@@ -132,7 +199,8 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                         <div class="d-flex">
                           <v-chip variant="elevated" color="#80BA27" text-color="white" class="mr-1">Bio</v-chip>
 
-                          <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white" class="mr-1">vegetarisch</v-chip>
+                          <v-chip variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                            class="mr-1">vegetarisch</v-chip>
                         </div>
                       </v-row>
                       <v-row>
@@ -159,8 +227,13 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
-                    <calendar-bg-do> </calendar-bg-do>
-
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content flex-column justify-content-center align-center">
+                          <div class="text-h4 font-weight-bold text-center">Do <span class="text-h5">06.06.</span></div>
+                        </div>
+                      </div>
+                    </div>
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
@@ -197,8 +270,13 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
-                    <calendar-bg-fr> </calendar-bg-fr>
-
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content flex-column justify-content-center align-center">
+                          <div class="text-h4 font-weight-bold text-center">Fr <span class="text-h5">07.06.</span></div>
+                        </div>
+                      </div>
+                    </div>
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
@@ -231,12 +309,17 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
                 </v-card-text>
               </v-card>
             </v-col>
+
           </v-row>
         </v-container>
       </v-col>
     </v-row>
   </v-container>
 </template>
+
+<script setup lang="ts">
+
+</script>
 
 <style lang="less">
 .calendar-bg {
@@ -252,13 +335,3 @@ import { VCard } from 'vuetify/lib/components/index.mjs';
   }
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      search: "",
-    };
-  },
-};
-</script>
