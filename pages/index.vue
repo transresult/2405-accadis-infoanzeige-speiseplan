@@ -30,8 +30,8 @@
             <v-img color="white" height="180" src="/img/biologisch.png" cover>
               <div class="text-center text-h3 pb-2 pt-10 font-weight-bold" style="color: #7d7d7d">Menü der Woche</div>
               <div class="text-h4 text-center font-weight-regular px-8 pt-1" style="color: #7d7d7d">{{
-                formattedDate(firstDayCurrentWeek) }} -
-                {{ formattedDate(lastDayCurrentWeek) }}</div>
+                formattedDate(firstDayCurrentWeekshow) }} -
+                {{ formattedDate(lastDayCurrentWeekshow) }}</div>
               <div class="text-center pt-3 text-caption" style="color: #7d7d7d">
                 Alle Angaben ohne Gewähr. Informationen zu Zusatzstoffen und Allergenen siehe Aushang.
               </div>
@@ -311,12 +311,6 @@
               </v-card>
             </v-col>
 
-            {{ weeklyMenu }}
-
-            <div v-for="item in weeklyMenu" :key="item.id">
-              {{ item.date }}
-            </div>
-
           </v-row>
         </v-container>
       </v-col>
@@ -347,8 +341,8 @@ const { data, error, status } = useFetch<{ data: Array<IFBMenue> }>(itemsUrl)
 const validStatus = "published"
 const isLoading = computed(() => status.value === "pending")
 
-var today = new Date("August 12, 2024 12:00:00");
-var atoday = new Date;
+var today = new Date("01 august 2024 00:01");
+var atoday = new Date();
 
 function getMonday(m: Date) {
   m = new Date(m);
@@ -358,7 +352,13 @@ function getMonday(m: Date) {
 };
 
 const firstDayCurrentWeek = getMonday(today);
-const lastDayCurrentWeek = new Date(firstDayCurrentWeek.getTime() + (4 * 24 * 60 * 60 * 1000));
+firstDayCurrentWeek.setHours(-2)
+
+const firstDayCurrentWeekshow = getMonday(today);
+const lastDayCurrentWeekshow = new Date(firstDayCurrentWeekshow.getTime() + (4 * 24 * 60 * 60 * 1000));
+
+const lastDayCurrentWeek = new Date(firstDayCurrentWeekshow.getTime() + (4 * 24 * 60 * 60 * 1000));
+lastDayCurrentWeek.setHours(+2)
 
 function formattedDate(date: Date) {
   const formatDate = new Date(date);
@@ -367,10 +367,9 @@ function formattedDate(date: Date) {
 
 const weeklyMenu = computed(() => {
   return data.value?.data
-    ?.filter((item) => validStatus.includes(item.status))
-      .filter((item) => firstDayCurrentWeek < new Date(item.date ?? ''))
-      .filter((item) => lastDayCurrentWeek < new Date(item.date ?? ''))
-      .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime()) ?? []
+    ?.filter((item) => firstDayCurrentWeek.getTime() <= new Date(item.date ?? '').getTime())
+    .filter((item) => lastDayCurrentWeek.getTime() >= new Date(item.date ?? '').getTime())
+    .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime()) ?? []
 })
 
 </script>
