@@ -29,8 +29,9 @@
           <v-card color="grey" class="">
             <v-img color="white" height="180" src="/img/biologisch.png" cover>
               <div class="text-center text-h3 pb-2 pt-10 font-weight-bold" style="color: #7d7d7d">Menü der Woche</div>
-              <div class="text-h4 text-center font-weight-regular px-8 pt-1" style="color: #7d7d7d">03.06.2024 -
-                07.06.2024</div>
+              <div class="text-h4 text-center font-weight-regular px-8 pt-1" style="color: #7d7d7d">{{
+                formattedDate(firstDayCurrentWeek) }} -
+                {{ formattedDate(lastDayCurrentWeek) }}</div>
               <div class="text-center pt-3 text-caption" style="color: #7d7d7d">
                 Alle Angaben ohne Gewähr. Informationen zu Zusatzstoffen und Allergenen siehe Aushang.
               </div>
@@ -315,6 +316,7 @@
             <div v-for="item in weeklyMenu" :key="item.id">
               {{ item.date }}
             </div>
+
           </v-row>
         </v-container>
       </v-col>
@@ -340,17 +342,35 @@ interface IFBMenue {
 }
 
 const itemsUrl = "https://accadis-bildung-gmbh-headless.web40.transresult.net/items/Speiseplan_Family_Bistro"
-const { data, error, status } = useFetch<{ data: Array<IFBMenue>}>(itemsUrl)
+const { data, error, status } = useFetch<{ data: Array<IFBMenue> }>(itemsUrl)
 
 const validStatus = "published"
-const isLoading = computed(() => status.value==="pending")
+const isLoading = computed(() => status.value === "pending")
+
+var today = new Date("August 12, 2024 12:00:00");
+var atoday = new Date;
+
+function getMonday(m) {
+  m = new Date(m);
+  var day = m.getDay(),
+    diff = m.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+  return new Date(m.setDate(diff));
+};
+
+const firstDayCurrentWeek = getMonday(today);
+const lastDayCurrentWeek = new Date(firstDayCurrentWeek.getTime() + (4 * 24 * 60 * 60 * 1000));
+
+function formattedDate(date) {
+  const formatDate = new Date(date);
+  return `${formatDate.toLocaleDateString("de-DE", { year: "numeric", month: "2-digit", day: "2-digit" })}`;
+};
 
 const weeklyMenu = computed(() => {
-
-
   return data.value?.data
     ?.filter((item) => validStatus.includes(item.status)) ?? []
-    .filter
+      .filter((item) => firstDayCurrentWeek < new Date(item.date ?? ''))
+      .filter((item) => lastDayCurrentWeek < new Date(item.date ?? ''))
+      .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime())
 })
 
 </script>
