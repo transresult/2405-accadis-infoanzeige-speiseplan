@@ -35,6 +35,7 @@
               <div class="text-center pt-3 text-caption" style="color: #7d7d7d">
                 Alle Angaben ohne Gewähr. Informationen zu Zusatzstoffen und Allergenen siehe Aushang.
               </div>
+
             </v-img>
           </v-card>
         </v-container>
@@ -310,6 +311,11 @@
               </v-card>
             </v-col>
 
+            <div v-for="item in weeklymenue" :key="item.id">
+              {{ item.date }}
+            </div>
+            {{ weeklymenue }}
+
           </v-row>
         </v-container>
       </v-col>
@@ -318,6 +324,49 @@
 </template>
 
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+
+const itemsUrl = "https://accadis-bildung-gmbh-headless.web40.transresult.net/items/Speiseplan_Family_Bistro"
+const data = ref<undefined | Array<IFBMenue>>(undefined)
+const error = ref<undefined | Error>(undefined)
+
+const validStatus = "published"
+const isLoading = computed(() => !data.value)
+
+interface IFBMenue {
+  date: string | null
+  id: number
+  status: string | null
+  fb_rawfood: string | null
+  fb_menue1: string | null
+  fb_menue2: string | null
+  fb_dessert: string | null
+  fb_rawfood_is: string[] | null
+  fb_dessert_is: string[] | null
+  fb_menue1_is: string[] | null
+  fb_menue2_is: string[] | null
+}
+
+
+
+const weeklymenue = computed(() => {
+  return data.value
+    ?.filter((item) => validStatus.includes(item.status))
+})
+
+console.log(weeklymenue)
+
+
+onMounted(async () => {
+  const response = await fetch(itemsUrl, {
+    method: 'get'
+  })
+
+  if (response.ok) {
+    data.value = (await response.json()) as Array<IFBMenue>
+  }
+
+})
 
 </script>
 
