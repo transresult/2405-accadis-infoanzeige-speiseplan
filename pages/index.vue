@@ -350,7 +350,7 @@ const isLoading = computed(() => status.value === "pending")
 var today = new Date("August 12, 2024 12:00:00");
 var atoday = new Date;
 
-function getMonday(m) {
+function getMonday(m: Date) {
   m = new Date(m);
   var day = m.getDay(),
     diff = m.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
@@ -360,17 +360,17 @@ function getMonday(m) {
 const firstDayCurrentWeek = getMonday(today);
 const lastDayCurrentWeek = new Date(firstDayCurrentWeek.getTime() + (4 * 24 * 60 * 60 * 1000));
 
-function formattedDate(date) {
+function formattedDate(date: Date) {
   const formatDate = new Date(date);
   return `${formatDate.toLocaleDateString("de-DE", { year: "numeric", month: "2-digit", day: "2-digit" })}`;
 };
 
 const weeklyMenu = computed(() => {
   return data.value?.data
-    ?.filter((item) => validStatus.includes(item.status)) ?? []
+    ?.filter((item) => validStatus.includes(item.status))
       .filter((item) => firstDayCurrentWeek < new Date(item.date ?? ''))
       .filter((item) => lastDayCurrentWeek < new Date(item.date ?? ''))
-      .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime())
+      .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime()) ?? []
 })
 
 </script>
