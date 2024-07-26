@@ -1,5 +1,4 @@
 <template>
-
   <!-- START NAVIGATIONBAR -->
 
   <v-app-bar color="#DEDEDE" class="pa-4" extended :extension-height="0">
@@ -311,11 +310,11 @@
               </v-card>
             </v-col>
 
-            <div v-for="item in weeklymenue" :key="item.id">
+            {{ weeklyMenu }}
+
+            <div v-for="item in weeklyMenu" :key="item.id">
               {{ item.date }}
             </div>
-            {{ weeklymenue }}
-
           </v-row>
         </v-container>
       </v-col>
@@ -326,17 +325,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 
-const itemsUrl = "https://accadis-bildung-gmbh-headless.web40.transresult.net/items/Speiseplan_Family_Bistro"
-const data = ref<undefined | Array<IFBMenue>>(undefined)
-const error = ref<undefined | Error>(undefined)
-
-const validStatus = "published"
-const isLoading = computed(() => !data.value)
-
 interface IFBMenue {
   date: string | null
   id: number
-  status: string | null
+  status: string
   fb_rawfood: string | null
   fb_menue1: string | null
   fb_menue2: string | null
@@ -347,25 +339,18 @@ interface IFBMenue {
   fb_menue2_is: string[] | null
 }
 
+const itemsUrl = "https://accadis-bildung-gmbh-headless.web40.transresult.net/items/Speiseplan_Family_Bistro"
+const { data, error, status } = useFetch<{ data: Array<IFBMenue>}>(itemsUrl)
+
+const validStatus = "published"
+const isLoading = computed(() => status.value==="pending")
+
+const weeklyMenu = computed(() => {
 
 
-const weeklymenue = computed(() => {
-  return data.value
-    ?.filter((item) => validStatus.includes(item.status))
-})
-
-console.log(weeklymenue)
-
-
-onMounted(async () => {
-  const response = await fetch(itemsUrl, {
-    method: 'get'
-  })
-
-  if (response.ok) {
-    data.value = (await response.json()) as Array<IFBMenue>
-  }
-
+  return data.value?.data
+    ?.filter((item) => validStatus.includes(item.status)) ?? []
+    .filter
 })
 
 </script>
