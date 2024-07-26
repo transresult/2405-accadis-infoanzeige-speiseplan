@@ -341,8 +341,8 @@ const { data, error, status } = useFetch<{ data: Array<IFBMenue> }>(itemsUrl)
 const validStatus = "published"
 const isLoading = computed(() => status.value === "pending")
 
-var today = new Date("01 august 2024 00:01");
-var atoday = new Date();
+// var today = new Date("01 august 2024 00:01");
+var today = new Date();
 
 function getMonday(m: Date) {
   m = new Date(m);
@@ -367,7 +367,8 @@ function formattedDate(date: Date) {
 
 const weeklyMenu = computed(() => {
   return data.value?.data
-    ?.filter((item) => firstDayCurrentWeek.getTime() <= new Date(item.date ?? '').getTime())
+    ?.filter((item) => validStatus.includes(item.status))
+    .filter((item) => firstDayCurrentWeek.getTime() <= new Date(item.date ?? '').getTime())
     .filter((item) => lastDayCurrentWeek.getTime() >= new Date(item.date ?? '').getTime())
     .sort((a, b) => new Date(a.date ?? '').getTime() - new Date(b.date ?? '').getTime()) ?? []
 })
