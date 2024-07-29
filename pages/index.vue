@@ -81,14 +81,90 @@
 
             <!-- START MENUE -->
 
-            <v-col cols="" class="menucol">
+            <v-col cols="" class="menucol" v-for="item in weeklyMenu" :key="item.id">
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
                     <div class="px-2 pb-2 card-date">
                       <div class="card-date-box d-flex align-items-end">
                         <div class="card-date-content flex-column justify-content-center align-center">
-                          <div class="text-h4 font-weight-bold text-center">Mo <span class="text-h5">03.06.</span></div>
+                          <div class="text-h4 font-weight-bold text-center">Mo <span class="text-h5">03.06.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <v-card-text>
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">{{ item.fb_rawfood }}
+                            <div class="d-flex" v-if="item.fb_rawfood_is?.length">
+                              <v-chip v-if="item.fb_rawfood_is?.find(str => str.includes('bio'))" variant="elevated"
+                                color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
+                              <v-chip v-if="item.fb_rawfood_is?.find(str => str.includes('vegetarian'))"
+                                variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                                class="mr-1">vegetarisch</v-chip>
+                            </div>
+                          </div>
+                        </v-col>
+                      </v-row>
+
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pr-16 pb-3">{{ item.fb_menue1 }}</div>
+                          <div class="d-flex" v-if="item.fb_menue1_is?.length">
+                            <v-chip v-if="item.fb_menue1_is?.find(str => str.includes('bio'))" variant="elevated"
+                              color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
+                            <v-chip v-if="item.fb_menue1_is?.find(str => str.includes('vegetarian'))" variant="elevated"
+                              color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                              class="mr-1">vegetarisch</v-chip>
+                          </div>
+                        </v-col>
+                      </v-row>
+
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5 pb-3">{{ item.fb_menue2 }}</div>
+                          <div class="d-flex" v-if="item.fb_menue2_is?.length">
+                            <v-chip v-if="item.fb_menue2_is?.find(str => str.includes('bio'))" variant="elevated"
+                              color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
+                            <v-chip v-if="item.fb_menue2_is?.find(str => str.includes('vegetarian'))" variant="elevated"
+                              color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                              class="mr-1">vegetarisch</v-chip>
+                          </div>
+                        </v-col>
+                      </v-row>
+
+                      <v-row>
+                        <v-col class="pa-0">
+                          <div class="text-h5">{{ item.fb_dessert }}</div>
+                          <div class="d-flex" v-if="item.fb_dessert_is?.length">
+                            <v-chip v-if="item.fb_dessert_is?.find(str => str.includes('bio'))" variant="elevated"
+                              color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
+                            <v-chip v-if="item.fb_dessert_is?.find(str => str.includes('vegetarian'))"
+                              variant="elevated" color="#80BA27" prepend-icon="mdi-leaf" text-color="white"
+                              class="mr-1">vegetarisch</v-chip>
+                          </div>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+
+                  </v-card>
+                </v-card-text>
+              </v-card>
+            </v-col>
+
+            <!-- END MENUE -->
+
+            <!-- <v-col cols="" class="menucol">
+              <v-card>
+                <v-card-text>
+                  <v-card class="calendar-bg my-2 mb-6 pa-3">
+                    <div class="px-2 pb-2 card-date">
+                      <div class="card-date-box d-flex align-items-end">
+                        <div class="card-date-content flex-column justify-content-center align-center">
+                          <div class="text-h4 font-weight-bold text-center">Mo <span class="text-h5">03.06.</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -131,8 +207,6 @@
                 </v-card-text>
               </v-card>
             </v-col>
-
-            <!-- END MENUE -->
 
             <v-col cols="" class="menucol">
               <v-card>
@@ -309,7 +383,7 @@
                   </v-card>
                 </v-card-text>
               </v-card>
-            </v-col>
+            </v-col> -->
 
           </v-row>
         </v-container>
