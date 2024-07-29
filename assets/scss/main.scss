@@ -33,13 +33,13 @@
         border-right: 1px solid #ccc;
     }
 
-    &.active {
+    .active {
 
         .card-date {
             @extend .turkis;
         }
 
-        >.v-card {
+        &.v-card {
             border: none;
             background-color: #2FAAB9;
         }

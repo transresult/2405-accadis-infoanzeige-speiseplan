@@ -80,15 +80,16 @@
             <!-- END DESCRIPTION -->
 
             <!-- START MENUE -->
-
             <v-col cols="" class="menucol" v-for="item in weeklyMenu" :key="item.id">
-              <v-card>
+              <v-card :class="{ active: (formattedDate(item.date) == formattedDate(today)) }">
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
                     <div class="px-2 pb-2 card-date">
                       <div class="card-date-box d-flex align-items-end">
                         <div class="card-date-content flex-column justify-content-center align-center">
-                          <div class="text-h4 font-weight-bold text-center">Mo <span class="text-h5">03.06.</span>
+                          <div class="text-h4 font-weight-bold text-center">{{ formattedDateweekday(item.date) }}
+                            <span class="text-h5">{{
+                              formattedDateshort(item.date) }}</span>
                           </div>
                         </div>
                       </div>
@@ -97,7 +98,7 @@
                     <v-card-text>
                       <v-row>
                         <v-col class="pa-0">
-                          <div class="text-h5 pr-16 pb-3">{{ item.fb_rawfood }}
+                          <div class="text-h5 pb-3">{{ item.fb_rawfood }}
                             <div class="d-flex" v-if="item.fb_rawfood_is?.length">
                               <v-chip v-if="item.fb_rawfood_is?.find(str => str.includes('bio'))" variant="elevated"
                                 color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
@@ -111,7 +112,7 @@
 
                       <v-row>
                         <v-col class="pa-0">
-                          <div class="text-h5 pr-16 pb-3">{{ item.fb_menue1 }}</div>
+                          <div class="text-h5 pb-3">{{ item.fb_menue1 }}</div>
                           <div class="d-flex" v-if="item.fb_menue1_is?.length">
                             <v-chip v-if="item.fb_menue1_is?.find(str => str.includes('bio'))" variant="elevated"
                               color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
@@ -137,7 +138,7 @@
 
                       <v-row>
                         <v-col class="pa-0">
-                          <div class="text-h5">{{ item.fb_dessert }}</div>
+                          <div class="text-h5 pb-3">{{ item.fb_dessert }}</div>
                           <div class="d-flex" v-if="item.fb_dessert_is?.length">
                             <v-chip v-if="item.fb_dessert_is?.find(str => str.includes('bio'))" variant="elevated"
                               color="#80BA27" text-color="white" class="mr-1">bio</v-chip>
@@ -148,15 +149,18 @@
                         </v-col>
                       </v-row>
                     </v-card-text>
-
                   </v-card>
                 </v-card-text>
               </v-card>
             </v-col>
 
+
+
             <!-- END MENUE -->
 
-            <!-- <v-col cols="" class="menucol">
+            <!-- 
+
+            <v-col cols="" class="menucol">
               <v-card>
                 <v-card-text>
                   <v-card class="calendar-bg my-2 mb-6 pa-3">
@@ -396,7 +400,7 @@
 import { computed, onMounted, ref } from 'vue'
 
 interface IFBMenue {
-  date: string | null
+  date: string
   id: number
   status: string
   fb_rawfood: string | null
@@ -415,8 +419,8 @@ const { data, error, status } = useFetch<{ data: Array<IFBMenue> }>(itemsUrl)
 const validStatus = "published"
 const isLoading = computed(() => status.value === "pending")
 
-// var today = new Date("01 august 2024 00:01");
-var today = new Date();
+var today = new Date("06 august 2024 00:01");
+var atoday = new Date();
 
 function getMonday(m: Date) {
   m = new Date(m);
@@ -434,9 +438,19 @@ const lastDayCurrentWeekshow = new Date(firstDayCurrentWeekshow.getTime() + (4 *
 const lastDayCurrentWeek = new Date(firstDayCurrentWeekshow.getTime() + (4 * 24 * 60 * 60 * 1000));
 lastDayCurrentWeek.setHours(+2)
 
-function formattedDate(date: Date) {
+function formattedDate(date: Date | string) {
   const formatDate = new Date(date);
   return `${formatDate.toLocaleDateString("de-DE", { year: "numeric", month: "2-digit", day: "2-digit" })}`;
+};
+
+function formattedDateshort(date: Date | string) {
+  const formatDate = new Date(date);
+  return `${formatDate.toLocaleDateString("de-DE", { month: "2-digit", day: "2-digit" })}`;
+};
+
+function formattedDateweekday(date: Date | string) {
+  const formatDate = new Date(date);
+  return `${formatDate.toLocaleDateString("de-DE", { weekday: 'short' })}`;
 };
 
 const weeklyMenu = computed(() => {
